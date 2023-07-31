@@ -18,9 +18,9 @@ class ViewController: UIViewController {
  
     @IBAction func startButton(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let regViewController = storyboard.instantiateViewController(identifier: "RegViewController") as? RegViewController else { return }
-        regViewController.modalPresentationStyle = .fullScreen
-        present(regViewController, animated: true, completion: nil)
+        guard let loginViewController = storyboard.instantiateViewController(identifier: "LoginViewController") as? LoginViewController else { return }
+        loginViewController.modalPresentationStyle = .fullScreen
+        present(loginViewController, animated: true, completion: nil)
     }
     
 }

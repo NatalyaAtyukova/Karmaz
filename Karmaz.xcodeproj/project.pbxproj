@@ -17,6 +17,7 @@
 		C8869DB62A77AB770027C0FC /* KarmazUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8869DB52A77AB770027C0FC /* KarmazUITests.swift */; };
 		C8869DB82A77AB770027C0FC /* KarmazUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8869DB72A77AB770027C0FC /* KarmazUITestsLaunchTests.swift */; };
 		C8869DC82A77B2720027C0FC /* RegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8869DC72A77B2720027C0FC /* RegViewController.swift */; };
+		C8CA6E8E2A77DB4900364D96 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CA6E8D2A77DB4900364D96 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		C8869DB52A77AB770027C0FC /* KarmazUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarmazUITests.swift; sourceTree = "<group>"; };
 		C8869DB72A77AB770027C0FC /* KarmazUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarmazUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C8869DC72A77B2720027C0FC /* RegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegViewController.swift; sourceTree = "<group>"; };
+		C8CA6E8D2A77DB4900364D96 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		C8869D932A77AB760027C0FC /* Karmaz */ = {
 			isa = PBXGroup;
 			children = (
+				C8CA6E8D2A77DB4900364D96 /* LoginViewController.swift */,
 				C8869DC72A77B2720027C0FC /* RegViewController.swift */,
 				C8869D982A77AB760027C0FC /* ViewController.swift */,
 				C8869D942A77AB760027C0FC /* AppDelegate.swift */,
@@ -264,6 +267,7 @@
 				C8869D992A77AB760027C0FC /* ViewController.swift in Sources */,
 				C8869D952A77AB760027C0FC /* AppDelegate.swift in Sources */,
 				C8869D972A77AB760027C0FC /* SceneDelegate.swift in Sources */,
+				C8CA6E8E2A77DB4900364D96 /* LoginViewController.swift in Sources */,
 				C8869DC82A77B2720027C0FC /* RegViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
