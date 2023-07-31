@@ -16,6 +16,7 @@
 		C8869DAC2A77AB770027C0FC /* KarmazTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8869DAB2A77AB770027C0FC /* KarmazTests.swift */; };
 		C8869DB62A77AB770027C0FC /* KarmazUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8869DB52A77AB770027C0FC /* KarmazUITests.swift */; };
 		C8869DB82A77AB770027C0FC /* KarmazUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8869DB72A77AB770027C0FC /* KarmazUITestsLaunchTests.swift */; };
+		C8869DC82A77B2720027C0FC /* RegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8869DC72A77B2720027C0FC /* RegViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		C8869DB12A77AB770027C0FC /* KarmazUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KarmazUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8869DB52A77AB770027C0FC /* KarmazUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarmazUITests.swift; sourceTree = "<group>"; };
 		C8869DB72A77AB770027C0FC /* KarmazUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KarmazUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C8869DC72A77B2720027C0FC /* RegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +101,10 @@
 		C8869D932A77AB760027C0FC /* Karmaz */ = {
 			isa = PBXGroup;
 			children = (
+				C8869DC72A77B2720027C0FC /* RegViewController.swift */,
+				C8869D982A77AB760027C0FC /* ViewController.swift */,
 				C8869D942A77AB760027C0FC /* AppDelegate.swift */,
 				C8869D962A77AB760027C0FC /* SceneDelegate.swift */,
-				C8869D982A77AB760027C0FC /* ViewController.swift */,
 				C8869D9A2A77AB760027C0FC /* Main.storyboard */,
 				C8869D9D2A77AB770027C0FC /* Assets.xcassets */,
 				C8869D9F2A77AB770027C0FC /* LaunchScreen.storyboard */,
@@ -261,6 +264,7 @@
 				C8869D992A77AB760027C0FC /* ViewController.swift in Sources */,
 				C8869D952A77AB760027C0FC /* AppDelegate.swift in Sources */,
 				C8869D972A77AB760027C0FC /* SceneDelegate.swift in Sources */,
+				C8869DC82A77B2720027C0FC /* RegViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
