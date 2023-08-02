@@ -18,6 +18,7 @@
 		C8869DB82A77AB770027C0FC /* KarmazUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8869DB72A77AB770027C0FC /* KarmazUITestsLaunchTests.swift */; };
 		C8869DC82A77B2720027C0FC /* RegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8869DC72A77B2720027C0FC /* RegViewController.swift */; };
 		C8CA6E8E2A77DB4900364D96 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CA6E8D2A77DB4900364D96 /* LoginViewController.swift */; };
+		C8CA6E912A77DE8500364D96 /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = C8CA6E902A77DE8500364D96 /* PhoneNumberKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8CA6E912A77DE8500364D96 /* PhoneNumberKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,8 +105,8 @@
 		C8869D932A77AB760027C0FC /* Karmaz */ = {
 			isa = PBXGroup;
 			children = (
-				C8CA6E8D2A77DB4900364D96 /* LoginViewController.swift */,
 				C8869DC72A77B2720027C0FC /* RegViewController.swift */,
+				C8CA6E8D2A77DB4900364D96 /* LoginViewController.swift */,
 				C8869D982A77AB760027C0FC /* ViewController.swift */,
 				C8869D942A77AB760027C0FC /* AppDelegate.swift */,
 				C8869D962A77AB760027C0FC /* SceneDelegate.swift */,
@@ -149,6 +151,9 @@
 			dependencies = (
 			);
 			name = Karmaz;
+			packageProductDependencies = (
+				C8CA6E902A77DE8500364D96 /* PhoneNumberKit */,
+			);
 			productName = Karmaz;
 			productReference = C8869D912A77AB760027C0FC /* Karmaz.app */;
 			productType = "com.apple.product-type.application";
@@ -221,6 +226,9 @@
 				Base,
 			);
 			mainGroup = C8869D882A77AB760027C0FC;
+			packageReferences = (
+				C8CA6E8F2A77DE8500364D96 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
+			);
 			productRefGroup = C8869D922A77AB760027C0FC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -610,6 +618,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C8CA6E8F2A77DE8500364D96 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/PhoneNumberKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C8CA6E902A77DE8500364D96 /* PhoneNumberKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C8CA6E8F2A77DE8500364D96 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */;
+			productName = PhoneNumberKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C8869D892A77AB760027C0FC /* Project object */;
 }
