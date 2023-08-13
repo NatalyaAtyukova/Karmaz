@@ -96,6 +96,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C84A85232A88F96E007D8973 /* ViewControllers(VC) */ = {
+			isa = PBXGroup;
+			children = (
+				C8869D982A77AB760027C0FC /* ViewController.swift */,
+				C8869DC72A77B2720027C0FC /* RegViewController.swift */,
+				C8CA6E8D2A77DB4900364D96 /* LoginViewController.swift */,
+				C8BB119F2A7AD3CE0070747F /* ResetPassViewController.swift */,
+			);
+			path = "ViewControllers(VC)";
+			sourceTree = "<group>";
+		};
 		C8869D882A77AB760027C0FC = {
 			isa = PBXGroup;
 			children = (
@@ -119,10 +130,7 @@
 		C8869D932A77AB760027C0FC /* Karmaz */ = {
 			isa = PBXGroup;
 			children = (
-				C8BB119F2A7AD3CE0070747F /* ResetPassViewController.swift */,
-				C8869DC72A77B2720027C0FC /* RegViewController.swift */,
-				C8CA6E8D2A77DB4900364D96 /* LoginViewController.swift */,
-				C8869D982A77AB760027C0FC /* ViewController.swift */,
+				C84A85232A88F96E007D8973 /* ViewControllers(VC) */,
 				C8869D942A77AB760027C0FC /* AppDelegate.swift */,
 				C8869D962A77AB760027C0FC /* SceneDelegate.swift */,
 				C8869D9A2A77AB760027C0FC /* Main.storyboard */,
