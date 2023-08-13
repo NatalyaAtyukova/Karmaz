@@ -10,24 +10,7 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
 
-//структура для окрашивания полей
-
-struct TextFieldValidator {
-    let textField: UITextField
-    
-    func changeBackgroundColor(hasError: Bool) {
-        if hasError {
-            textField.backgroundColor = UIColor.red
-        } else{
-            textField.backgroundColor = UIColor.white // Установите цвет фона по умолчанию
-        }
-    }
-}
-
-
 class RegViewController: UIViewController, UITextFieldDelegate {
-    
-
     
     @IBOutlet weak var txtFName: UITextField!
     
@@ -40,33 +23,18 @@ class RegViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtConfirmPassword: UITextField!
     
     
-    // Объекты TextFieldValidator для каждого текстового поля
-    var firstNameValidator: TextFieldValidator!
-    var lastNameValidator: TextFieldValidator!
-    var emailValidator: TextFieldValidator!
-    var passwordValidator: TextFieldValidator!
-    var confirmPasswordValidator: TextFieldValidator!
-    //
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Валидация для цвета
-        firstNameValidator = TextFieldValidator(textField: txtFName)
-        lastNameValidator = TextFieldValidator(textField: txtLName)
-        emailValidator = TextFieldValidator(textField: txtEmail)
-        passwordValidator = TextFieldValidator(textField: txtPassword)
-        confirmPasswordValidator = TextFieldValidator(textField: txtConfirmPassword)
-        
+        //code
     }
     
     @IBAction func btnRegistration(_ sender: Any) {
-        
         //fname and lname
         if txtFName.text?.count == 0 {
             let alert = UIAlertController(title: "Ошибка!", message: "Please enter your first name.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
+            
         } else if !isValidName(testStr: txtFName.text!) {
             let alert = UIAlertController(title: "Ошибка!", message: "Invalid first name. Only alphabetic characters are allowed.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -81,7 +49,7 @@ class RegViewController: UIViewController, UITextFieldDelegate {
             present(alert, animated: true, completion: nil)
             
             //email
-        } else if (txtEmail.text?.count == 0){
+        } else if txtEmail.text?.count == 0 {
             let alert = UIAlertController(title: "Ошибка!", message: "Please enter your Email.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
@@ -93,7 +61,7 @@ class RegViewController: UIViewController, UITextFieldDelegate {
             
             
             //password and re-pass
-        } else if (txtPassword.text?.count == 0){
+        } else if txtPassword.text?.count == 0 {
             let alert = UIAlertController(title: "Ошибка!", message: "Please enter your password.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
@@ -103,25 +71,21 @@ class RegViewController: UIViewController, UITextFieldDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
             
-        } else if (txtConfirmPassword.text?.count == 0){
+        } else if txtConfirmPassword.text?.count == 0 {
             let alert = UIAlertController(title: "Ошибка!", message: "Confirmed password empty please try again.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
+   
             
-        } else if (txtConfirmPassword.text != txtPassword.text){
+        } else if txtConfirmPassword.text != txtPassword.text {
             let alert = UIAlertController(title: "Ошибка!", message: "Confirmed password not matched please try again.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
+
             
-            // Измените цвет фона полей с ошибками
-            firstNameValidator.changeBackgroundColor(hasError: txtFName.text?.count == 0)
-            lastNameValidator.changeBackgroundColor(hasError: txtLName.text?.count == 0)
-            emailValidator.changeBackgroundColor(hasError: txtEmail.text?.count == 0)
-            passwordValidator.changeBackgroundColor(hasError: txtPassword.text?.count == 0)
-            confirmPasswordValidator.changeBackgroundColor(hasError: txtConfirmPassword.text?.count == 0 || txtConfirmPassword.text != txtPassword.text)
+           
             
         } else {
-            
             //Create User
             
             let firstName = txtFName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -162,8 +126,10 @@ class RegViewController: UIViewController, UITextFieldDelegate {
         
       
     }
+    
+    //Valid func
         
-        func isValidName(testStr: String) -> Bool {
+    func isValidName(testStr: String) -> Bool {
             let nameRegex = "^[a-zA-Z]+$"
             let nameTest = NSPredicate(format: "SELF MATCHES %@", nameRegex)
             let result = nameTest.evaluate(with: testStr)

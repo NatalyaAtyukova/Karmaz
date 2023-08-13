@@ -6,27 +6,38 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ResetPassViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var emailField: UITextField!
     
+
     
-    @IBOutlet weak var resetNewPassword: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
     
 
         
-        func btnResetPassword(_ sender: Any) {
-            if (resetNewPassword.text?.count == 0){
-                let alert = UIAlertController(title: "Oops!", message: "Please enter your password.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                present(alert, animated: true, completion: nil)
+    @IBAction func btnResetPassword(_ sender: Any) {
+    
+            let email = emailField.text!
+            
+            Auth.auth().sendPasswordReset(withEmail: email) { error in
+                if error != nil {
+                    let alert = UIAlertController(title: "Сброс пароля", message: "Ошибка. Не корректный Email", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    let alert = UIAlertController(title: "Сброс пароля", message: "Ссылка для восстановления, отправлена на вашу электронную почту!", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+
+                }
+            }
             }
         }
         
-    }
+    
