@@ -30,12 +30,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func btnForReg(_ sender: UIButton) {
-        
-        //Переход по кнопке
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let regViewController = storyboard.instantiateViewController(identifier: "RegViewController") as? RegViewController else { return }
-        regViewController.modalPresentationStyle = .fullScreen
-        present(regViewController, animated: true, completion: nil)
+        performSegue(withIdentifier: "goToRegister", sender: self
+        )
+//        //Переход по кнопке
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        guard let regViewController = storyboard.instantiateViewController(identifier: "RegViewController") as? RegViewController else { return }
+//        regViewController.modalPresentationStyle = .fullScreen
+//        present(regViewController, animated: true, completion: nil)
         
     }
     
@@ -76,12 +77,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         
         @IBAction func forgotPassword(_ sender: Any) {
-            
-            //Переход по кнопке
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            guard let resetPassViewController = storyboard.instantiateViewController(identifier: "ResetPassViewController") as? ResetPassViewController else { return }
-            resetPassViewController.modalPresentationStyle = .fullScreen
-            present(resetPassViewController, animated: true, completion: nil)
+            performSegue(withIdentifier: "goToResetPassword", sender: self)
+//            //Переход по кнопке
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            guard let resetPassViewController = storyboard.instantiateViewController(identifier: "ResetPassViewController") as? ResetPassViewController else { return }
+//            resetPassViewController.modalPresentationStyle = .fullScreen
+//            present(resetPassViewController, animated: true, completion: nil)
             
         }
     }

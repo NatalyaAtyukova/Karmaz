@@ -76,12 +76,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUa-pH-Iwi">
-                                <rect key="frame" x="131" y="502" width="154" height="35"/>
+                                <rect key="frame" x="132" y="503" width="154" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Забыли пароль?"/>
                                 <connections>
-                                    <action selector="forgotPassword:" destination="HIn-86-wLu" eventType="touchUpInside" id="iJo-RC-X1d"/>
+                                    <action selector="forgotPassword:" destination="HIn-86-wLu" eventType="touchUpInside" id="wPf-0Q-3qI"/>
+                                    <segue destination="AoJ-Az-Z7Q" kind="presentation" identifier="goToResetPassword" modalPresentationStyle="fullScreen" id="7nq-cy-ihy"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1y2-ld-9jD">
@@ -104,7 +104,8 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Зарегистрироваться"/>
                                 <connections>
-                                    <action selector="btnForReg:" destination="HIn-86-wLu" eventType="touchUpInside" id="M0t-Za-2BY"/>
+                                    <action selector="btnForReg:" destination="HIn-86-wLu" eventType="touchUpInside" id="WBf-VL-uNM"/>
+                                    <segue destination="eHx-XQ-JmC" kind="presentation" identifier="goToRegister" modalPresentationStyle="fullScreen" id="Wha-YH-PrI"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTT-G1-Mq0">
@@ -132,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sed-j8-OR5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="760.86956521739137" y="2.6785714285714284"/>
+            <point key="canvasLocation" x="4401.449275362319" y="2.6785714285714284"/>
         </scene>
         <!--Reg View Controller-->
         <scene sceneID="ph5-BO-lCo">
@@ -197,11 +198,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6Q-m6-KTf">
-                                <rect key="frame" x="11" y="83" width="84" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Close"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1G-yp-WC6">
                                 <rect key="frame" x="26" y="450" width="74" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -249,7 +245,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ex4-5i-7er" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1471.0144927536232" y="2.6785714285714284"/>
+            <point key="canvasLocation" x="5123.188405797102" y="-475.44642857142856"/>
         </scene>
         <!--Reset Pass View Controller-->
         <scene sceneID="aka-xQ-XMa">
@@ -298,7 +294,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LeY-ec-CwM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2216" y="3"/>
+            <point key="canvasLocation" x="5123.188405797102" y="209.59821428571428"/>
         </scene>
     </scenes>
     <resources>

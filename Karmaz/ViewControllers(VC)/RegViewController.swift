@@ -167,6 +167,7 @@ class RegViewController: UIViewController, UITextFieldDelegate {
         return containsCapitalLetter && containsSmallLetter && containsNumber
     }
 
+  
     
         
     }
