@@ -8,8 +8,9 @@
 import Foundation
 
 struct ResponseCode {
-
+    
 }
+
 
 
 

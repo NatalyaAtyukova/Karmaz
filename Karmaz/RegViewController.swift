@@ -63,41 +63,48 @@ class RegViewController: UIViewController, UITextFieldDelegate {
     @IBAction func btnRegistration(_ sender: Any) {
         
         if txtFName.text?.count == 0 {
-            let alert = UIAlertController(title: "Oops!", message: "Please enter your first name.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Ошибка!", message: "Please enter your first name.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         } else if !isValidName(testStr: txtFName.text!) {
-            let alert = UIAlertController(title: "Oops!", message: "Invalid first name. Only alphabetic characters are allowed.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Ошибка!", message: "Invalid first name. Only alphabetic characters are allowed.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         } else if txtLName.text?.count == 0 {
-            let alert = UIAlertController(title: "Oops!", message: "Please enter your last name.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Ошибка!", message: "Please enter your last name.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         } else if !isValidName(testStr: txtLName.text!) {
-            let alert = UIAlertController(title: "Oops!", message: "Invalid last name. Only alphabetic characters are allowed.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Ошибка!", message: "Invalid last name. Only alphabetic characters are allowed.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
             
         } else if (txtEmail.text?.count == 0){
-            let alert = UIAlertController(title: "Oops!", message: "Please enter your Email.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Ошибка!", message: "Please enter your Email.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
             
         } else if (txtPassword.text?.count == 0){
-            let alert = UIAlertController(title: "Oops!", message: "Please enter your password.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Ошибка!", message: "Please enter your password.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
             
         } else if (txtConfirmPassword.text?.count == 0){
-            let alert = UIAlertController(title: "Oops!", message: "Confirmed password empty please try again.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Ошибка!", message: "Confirmed password empty please try again.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
             
         } else if (txtConfirmPassword.text != txtPassword.text){
-            let alert = UIAlertController(title: "Oops!", message: "Confirmed password not matched please try again.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Ошибка!", message: "Confirmed password not matched please try again.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
+            
+            // Измените цвет фона полей с ошибками
+            firstNameValidator.changeBackgroundColor(hasError: txtFName.text?.count == 0)
+            lastNameValidator.changeBackgroundColor(hasError: txtLName.text?.count == 0)
+            emailValidator.changeBackgroundColor(hasError: txtEmail.text?.count == 0)
+            passwordValidator.changeBackgroundColor(hasError: txtPassword.text?.count == 0)
+            confirmPasswordValidator.changeBackgroundColor(hasError: txtConfirmPassword.text?.count == 0 || txtConfirmPassword.text != txtPassword.text)
             
         } else {
             
@@ -112,16 +119,22 @@ class RegViewController: UIViewController, UITextFieldDelegate {
             Auth.auth().createUser(withEmail: email, password: password) { result, err in
                 //check errors
                 if err != nil {
-                    print("Не удалось создать пользователя")
+                    let alert = UIAlertController(title: "Ошика при обращении к БД", message: "Не корректные значения при обращении к FireBase!", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
                 else {
                     let db = Firestore.firestore()
                     db.collection("users").addDocument(data: ["firstName": firstName, "lastName": lastName, "uid": result!.user.uid]) { (error) in
                         if error != nil {
-                            print("Ошибка при создании пользователя")
+                            let alert = UIAlertController(title: "Регистрация пользователя", message: "Ошибка при регистрации пользователя!", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
                         } else {
-                            // В случае успешного создания пользователя выполнить нужный код
-                            print("Пользователь успешно создан!")
+                            let alert = UIAlertController(title: "Регистрация пользователя", message: "Ваша регистрация прошла успешно!", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+
                         }
                         
                     }
@@ -129,20 +142,12 @@ class RegViewController: UIViewController, UITextFieldDelegate {
                 }
                 
             }
-            let alert = UIAlertController(title: "User Registration!", message: "Your Registration is successfully.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
+
             
         }
         
         
-        // Измените цвет фона полей с ошибками
-        firstNameValidator.changeBackgroundColor(hasError: txtFName.text?.count == 0)
-        lastNameValidator.changeBackgroundColor(hasError: txtLName.text?.count == 0)
-        emailValidator.changeBackgroundColor(hasError: txtEmail.text?.count == 0)
-        passwordValidator.changeBackgroundColor(hasError: txtPassword.text?.count == 0)
-        confirmPasswordValidator.changeBackgroundColor(hasError: txtConfirmPassword.text?.count == 0 || txtConfirmPassword.text != txtPassword.text)
-     
+      
     }
         
         func isValidName(testStr: String) -> Bool {
