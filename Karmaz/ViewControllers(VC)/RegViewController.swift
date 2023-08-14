@@ -28,6 +28,12 @@ class RegViewController: UIViewController, UITextFieldDelegate {
         //code
     }
     
+    
+    @IBAction func backToLoginVC(_ sender: Any) {
+        performSegue(withIdentifier: "regBackToLoginVC", sender: self
+        )
+    }
+    
     @IBAction func btnRegistration(_ sender: Any) {
         //fname and lname
         if txtFName.text?.count == 0 {

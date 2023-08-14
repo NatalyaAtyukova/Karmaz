@@ -32,6 +32,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func btnForReg(_ sender: UIButton) {
         performSegue(withIdentifier: "goToRegister", sender: self
         )
+        performSegue(withIdentifier: "goToResetPassword", sender: self
+        )
 //        //Переход по кнопке
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        guard let regViewController = storyboard.instantiateViewController(identifier: "RegViewController") as? RegViewController else { return }

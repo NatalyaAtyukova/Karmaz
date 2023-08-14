@@ -17,6 +17,13 @@ class ResetPassViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+    }
+    
+    
+    @IBAction func backToLoginVC(_ sender: Any) {
+        performSegue(withIdentifier: "resetpassBackToLoginVC", sender: self
+        )
     }
     
 
