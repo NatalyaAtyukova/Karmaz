@@ -115,16 +115,15 @@ class RegViewController: UIViewController, UITextFieldDelegate {
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             self.present(alert, animated: true, completion: nil)
                         } else {
+                            //
                             let alert = UIAlertController(title: "Регистрация пользователя", message: "Ваша регистрация прошла успешно!", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             self.present(alert, animated: true, completion: nil)
-
                         }
                         
                     }
                     
                 }
-                
             }
             
         }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C820A0F62A880F3F00A88A55 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C820A0F52A880F3F00A88A55 /* GoogleService-Info.plist */; };
 		C820A0F82A8820D400A88A55 /* ResponseCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C820A0F72A8820D400A88A55 /* ResponseCode.swift */; };
+		C8680BFD2A8CC8610062ADEF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8680BFC2A8CC8610062ADEF /* ProfileViewController.swift */; };
 		C8869D952A77AB760027C0FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8869D942A77AB760027C0FC /* AppDelegate.swift */; };
 		C8869D972A77AB760027C0FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8869D962A77AB760027C0FC /* SceneDelegate.swift */; };
 		C8869D992A77AB760027C0FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8869D982A77AB760027C0FC /* ViewController.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		C820A0F52A880F3F00A88A55 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C820A0F72A8820D400A88A55 /* ResponseCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCode.swift; sourceTree = "<group>"; };
+		C8680BFC2A8CC8610062ADEF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C8869D912A77AB760027C0FC /* Karmaz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Karmaz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8869D942A77AB760027C0FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8869D962A77AB760027C0FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				C8869DC72A77B2720027C0FC /* RegViewController.swift */,
 				C8CA6E8D2A77DB4900364D96 /* LoginViewController.swift */,
 				C8BB119F2A7AD3CE0070747F /* ResetPassViewController.swift */,
+				C8680BFC2A8CC8610062ADEF /* ProfileViewController.swift */,
 			);
 			path = "ViewControllers(VC)";
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				C8869D972A77AB760027C0FC /* SceneDelegate.swift in Sources */,
 				C8BB11A02A7AD3CE0070747F /* ResetPassViewController.swift in Sources */,
 				C8CA6E8E2A77DB4900364D96 /* LoginViewController.swift in Sources */,
+				C8680BFD2A8CC8610062ADEF /* ProfileViewController.swift in Sources */,
 				C8869DC82A77B2720027C0FC /* RegViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

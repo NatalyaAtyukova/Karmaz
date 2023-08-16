@@ -72,8 +72,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
-            
-            
+        performSegue(withIdentifier: "loginInApp", sender: self
+        )
         }
         
         
