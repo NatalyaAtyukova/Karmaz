@@ -6,11 +6,11 @@
 //
 
 import UIKit
-import FirebaseCore
-import FirebaseFirestore
-import FirebaseAuth
+
 
 class RegViewController: UIViewController, UITextFieldDelegate {
+    
+    var service = Service.shared
     
     @IBOutlet weak var txtFName: UITextField!
     
@@ -99,32 +99,8 @@ class RegViewController: UIViewController, UITextFieldDelegate {
             let email = txtEmail.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = txtPassword.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
+            service.createUser(in: self, firstName: firstName, lastName: lastName, email: email, password: password) //Вызывает func create user из service с окном алерта - уведомлением
             
-            Auth.auth().createUser(withEmail: email, password: password) { result, err in
-                //check errors
-                if err != nil {
-                    let alert = UIAlertController(title: "Ошика при обращении к БД", message: "Не корректные значения при обращении к FireBase!", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                }
-                else {
-                    let db = Firestore.firestore()
-                    db.collection("users").addDocument(data: ["firstName": firstName, "lastName": lastName, "uid": result!.user.uid]) { (error) in
-                        if error != nil {
-                            let alert = UIAlertController(title: "Регистрация пользователя", message: "Ошибка при регистрации пользователя!", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
-                        } else {
-                            //
-                            let alert = UIAlertController(title: "Регистрация пользователя", message: "Ваша регистрация прошла успешно!", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
-                        }
-                        
-                    }
-                    
-                }
-            }
             
         }
         
