@@ -69,29 +69,62 @@ class Service{
             }
         }
     }
+    
+//    func checkAuthInApp(){
+//    }
+    
+    
+    func getUserInfo(completion: @escaping (String?, String?) -> Void) {
+        if let user = Auth.auth().currentUser {
+            let db = Firestore.firestore()
+            let uid = user.uid
 
-    
-    
+            // Получаем ссылку на документ пользователя в Firestore
+            let userRef = db.collection("users").document("rUmL4wcykX1uKXoq0QNV") //uid конкретного пользователя "rUmL4wcykX1uKXoq0QNV"
+
+            // Получаем данные пользователя из Firestore
+            userRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let data = document.data()
+                    let firstName = data?["firstName"] as? String
+                    let lastName = data?["lastName"] as? String
+                    
+                    completion(firstName, lastName)
+
+                    // Выводим приветствие с именем пользователя
+                    print("\(firstName ?? ""), \(lastName ?? "")")
+                    
+                } else {
+                    // Ошибка при получении данных пользователя
+                    print("Привет, Unknown!")
+                }
+            }
+        }
+    }
+
+
+
+//
             
             
-            
-            //    func checkAuthInApp(){
-            //        Auth.auth().signIn(withEmail: email, password: password) { result, err in
-            //            if err != nil{
-            //                //
-            //            } else {
-            //                if let result = result {
-            //                    if result.user.isEmailVerified { // проверка на подтверждение почты
-            //                        //
-            //                    } else {
-            //                        // self.confirmEmail()
-            //                        //
-            //                    }
-            //                }
-            //            }
-            //        }
-            //    }
-            
+//            
+//                func checkAuthInApp(){
+//                    Auth.auth().signIn(in viewController: ProfileViewController, withEmail: email, password: password) { result, error in
+//                        if error != nil{
+//                            //
+//                        } else {
+//                            if let result = result {
+//                                if result.user.isEmailVerified { // проверка на подтверждение почты
+//                                    //
+//                                } else {
+//                                    // self.confirmEmail()
+//                                    //
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            
         }
         
         

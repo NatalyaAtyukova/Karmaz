@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C81718552AACE95D00826C2A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81718542AACE95D00826C2A /* TabBarViewController.swift */; };
 		C820A0F62A880F3F00A88A55 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C820A0F52A880F3F00A88A55 /* GoogleService-Info.plist */; };
 		C820A0F82A8820D400A88A55 /* ResponseCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C820A0F72A8820D400A88A55 /* ResponseCode.swift */; };
 		C8680C002A8CE3C40062ADEF /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8680BFF2A8CE3C40062ADEF /* Service.swift */; };
@@ -29,6 +30,8 @@
 		C8E4F4A82A7FAFD7006CEAA4 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = C8E4F4A72A7FAFD7006CEAA4 /* FirebaseDatabase */; };
 		C8E4F4AA2A7FAFD7006CEAA4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C8E4F4A92A7FAFD7006CEAA4 /* FirebaseFirestore */; };
 		C8E4F4AC2A7FAFD7006CEAA4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C8E4F4AB2A7FAFD7006CEAA4 /* FirebaseStorage */; };
+		C8FF23EC2AB4D4F5009B797F /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FF23EB2AB4D4F5009B797F /* PayViewController.swift */; };
+		C8FF23EE2AB4D502009B797F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FF23ED2AB4D502009B797F /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C81718542AACE95D00826C2A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C820A0F52A880F3F00A88A55 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C820A0F72A8820D400A88A55 /* ResponseCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCode.swift; sourceTree = "<group>"; };
 		C8680BFF2A8CE3C40062ADEF /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 		C8869DC72A77B2720027C0FC /* RegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegViewController.swift; sourceTree = "<group>"; };
 		C8BB119F2A7AD3CE0070747F /* ResetPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassViewController.swift; sourceTree = "<group>"; };
 		C8CA6E8D2A77DB4900364D96 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C8FF23EB2AB4D4F5009B797F /* PayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
+		C8FF23ED2AB4D502009B797F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C817184F2AACE4C700826C2A /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				C81718542AACE95D00826C2A /* TabBarViewController.swift */,
+				C8FF23EB2AB4D4F5009B797F /* PayViewController.swift */,
+				C8FF23ED2AB4D502009B797F /* MapViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		C84A85232A88F96E007D8973 /* ViewControllers(VC) */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +153,7 @@
 		C8869D932A77AB760027C0FC /* Karmaz */ = {
 			isa = PBXGroup;
 			children = (
+				C817184F2AACE4C700826C2A /* TabBar */,
 				C84A85232A88F96E007D8973 /* ViewControllers(VC) */,
 				C8869D942A77AB760027C0FC /* AppDelegate.swift */,
 				C8869D962A77AB760027C0FC /* SceneDelegate.swift */,
@@ -312,9 +329,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C820A0F82A8820D400A88A55 /* ResponseCode.swift in Sources */,
+				C8FF23EC2AB4D4F5009B797F /* PayViewController.swift in Sources */,
 				C8869D992A77AB760027C0FC /* ViewController.swift in Sources */,
+				C81718552AACE95D00826C2A /* TabBarViewController.swift in Sources */,
 				C86AD2C12A92161F0065EE55 /* ProfileViewController.swift in Sources */,
 				C8680C042A8CECAA0062ADEF /* AlertManager.swift in Sources */,
+				C8FF23EE2AB4D502009B797F /* MapViewController.swift in Sources */,
 				C8869D952A77AB760027C0FC /* AppDelegate.swift in Sources */,
 				C8869D972A77AB760027C0FC /* SceneDelegate.swift in Sources */,
 				C8BB11A02A7AD3CE0070747F /* ResetPassViewController.swift in Sources */,

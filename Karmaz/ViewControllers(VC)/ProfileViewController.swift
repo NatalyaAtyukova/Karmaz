@@ -6,32 +6,84 @@
 //
 
 import UIKit
+import FirebaseStorage
+import FirebaseFirestore
+import FirebaseAuth
+
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
    
+    var service = Service.shared
  
 
-    @IBOutlet weak var profilePhoto: UIImageView!
+//--------UIImageController
     
+    @IBOutlet weak var nameLabel: UILabel!
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        service.getUserInfo { [weak self] firstName, lastName in
+            // Передача данных в функцию displayUserData
+            self?.displayUserData(firstName: firstName, lastName: lastName)
+        }
     }
     
-    @IBAction func loadPhotoButtonTapped(_ sender: UIButton) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = .photoLibrary
-            present(imagePicker, animated: true, completion: nil)
-        }
-
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                profilePhoto.image = selectedImage
+    func displayUserData(firstName: String?, lastName: String?) {
+        if let firstName = firstName, let lastName = lastName {
+            DispatchQueue.main.async { [weak self] in
+                self?.nameLabel.text = "Привет, \(firstName) \(lastName)!"
             }
-            dismiss(animated: true, completion: nil)
         }
+    }
+
+
+    @IBAction func choosePhoto(_ sender: UIButton) {
+        let imagePickerController = UIImagePickerController()
+               imagePickerController.delegate = self
+               
+               let actionSheet = UIAlertController(title: "Выберите фото", message: nil, preferredStyle: .actionSheet)
+               
+               actionSheet.addAction(UIAlertAction(title: "Камера", style: .default, handler: { (action:UIAlertAction) in
+                   if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                       imagePickerController.sourceType = .camera
+                       self.present(imagePickerController, animated: true, completion: nil)
+                   } else {
+                       print("Камера не доступна")
+                   }
+               }))
+               
+               actionSheet.addAction(UIAlertAction(title: "Фотоальбом", style: .default, handler: { (action:UIAlertAction) in
+                   imagePickerController.sourceType = .photoLibrary
+                   self.present(imagePickerController, animated: true, completion: nil)
+               }))
+               
+               actionSheet.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+               
+               self.present(actionSheet, animated: true, completion: nil)
+           }
+           
+           func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+               picker.dismiss(animated: true, completion: nil)
+               
+               guard info[UIImagePickerController.InfoKey.originalImage] is UIImage else {
+                   return
+               }
+               
+             //  imageView.image = image
+           }
+           
+           func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+               picker.dismiss(animated: true, completion: nil)
+           }
+
+
+    
+    //fname lmane fb
+   
+
+
 
     
     @IBAction func startJob(_ sender: Any) {
