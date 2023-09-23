@@ -75,14 +75,21 @@ class Service{
     
     
     func getUserInfo(completion: @escaping (String?, String?) -> Void) {
+        // Проверяем, есть ли текущий пользователь
         if let currentUser = Auth.auth().currentUser {
+            // Получаем UID пользователя
             let userID = currentUser.uid
+            // Создаем ссылку на коллекцию "users" и фильтруем ее по полю "uid" равному UID пользователя
             let usersRef = Firestore.firestore().collection("users").whereField("uid", isEqualTo: userID)
+            // Получаем документы, удовлетворяющие фильтру
             usersRef.getDocuments { (querySnapshot, error) in
+                // Проверяем наличие ошибки
                 if let error = error {
                     print("Error getting user data: \(error)")
                 } else {
+                    // Проверяем, есть ли документы
                     if let document = querySnapshot?.documents.first {
+                        // Получаем данные из документа
                         let data = document.data()
                         let firstName = data["firstName"] as? String
                         let lastName = data["lastName"] as? String
@@ -98,9 +105,65 @@ class Service{
             }
         }
     }
+    
+    func uploadImage(image: UIImage) {
+        guard let imageData = image.jpegData(compressionQuality: 1.0) else { return }
+        
+        let storageRef = Storage.storage().reference().child("profileImages").child(UUID().uuidString)
+        
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        
+        storageRef.putData(imageData, metadata: metadata) { (metadata, error) in
+            if let error = error {
+                print("Ошибка при загрузке изображения: \(error.localizedDescription)")
+                return
+            }
+            
+            storageRef.downloadURL { (url, error) in
+                if let error = error {
+                    print("Ошибка при получении URL загруженного изображения: \(error.localizedDescription)")
+                    return
+                }
+                
+                if let downloadURL = url {
+                    let imageURLString = downloadURL.absoluteString
+                    // Сохраните imageURLString в профиле пользователя или базе данных
+                    if let currentUser = Auth.auth().currentUser {
+                        let db = Firestore.firestore()
+                        let userID = currentUser.uid
+                        let userRef = db.collection("users").whereField("uid", isEqualTo: userID).limit(to: 1)
+                        
+                        let imageURLString = "https://<your-image-url>"
+                        
+                        userRef.getDocuments { (querySnapshot, error) in
+                            if let error = error {
+                                print("Ошибка при получении документа пользователя: \(error.localizedDescription)")
+                            } else {
+                                if let document = querySnapshot?.documents.first {
+                                    document.reference.setData(["imageURL": imageURLString], merge: true) { (error) in
+                                        if let error = error {
+                                            print("Ошибка при сохранении URL изображения: \(error.localizedDescription)")
+                                        } else {
+                                            print("URL изображения успешно сохранен")
+                                            // Дополнительные операции после сохранения изображения
+                                        }
+                                    }
+                                } else {
+                                    print("Документ пользователя не найден")
+                                    
+                                    // Дополнительные операции после сохранения изображения
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 
-
+ 
 //
             
             
