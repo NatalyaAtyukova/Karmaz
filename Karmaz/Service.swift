@@ -74,7 +74,7 @@ class Service{
 //    }
     
     
-    func getUserInfo(completion: @escaping (String?, String?) -> Void) {
+    func getUserInfo(completion: @escaping (String?, String?, String?) -> Void) {
         // Проверяем, есть ли текущий пользователь
         if let currentUser = Auth.auth().currentUser {
             // Получаем UID пользователя

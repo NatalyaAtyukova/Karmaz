@@ -22,20 +22,32 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        service.getUserInfo { [weak self] firstName, lastName in
-            // Передача данных в функцию displayUserData
-            self?.displayUserData(firstName: firstName, lastName: lastName)
+        service.getUserInfo { [weak self] firstName, lastName, imageURL in
+            self?.displayUserData(firstName: firstName, lastName: lastName, imageURL: imageURL)
         }
+
         imagePicker.delegate = self
     }
     
-    func displayUserData(firstName: String?, lastName: String?) {
-        if let firstName = firstName, let lastName = lastName {
+    func displayUserData(firstName: String?, lastName: String?, imageURL: String?) {
+        if let firstName = firstName, let lastName = lastName, let imageURL = imageURL, let url = URL(string: imageURL) {
+            // Асинхронно загружаем изображение по URL
+            DispatchQueue.global().async { [weak self] in
+                if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+                    // Обновляем изображение в главном потоке
+                    DispatchQueue.main.async {
+                        self?.profileImageView.image = image
+                    }
+                }
+            }
+            
+            // Обновляем имя пользователя
             DispatchQueue.main.async { [weak self] in
                 self?.nameLabel.text = "Привет, \(firstName) \(lastName)!"
             }
         }
     }
+
 
     let imagePicker = UIImagePickerController()
 
