@@ -93,9 +93,10 @@ class Service{
                         let data = document.data()
                         let firstName = data["firstName"] as? String
                         let lastName = data["lastName"] as? String
-                        completion(firstName, lastName)
-                        // Выводим приветствие с именем пользователя
-                        print("\(firstName ?? ""), \(lastName ?? "")")
+                        let imageURL = data["imageURL"] as? String
+                          completion(firstName, lastName, imageURL)
+                          // Выводим приветствие с именем пользователя и ссылкой на изображение
+                          print("\(firstName ?? ""), \(lastName ?? ""), \(imageURL ?? "")")
                         
                     } else {
                         // Ошибка при получении данных пользователя
@@ -128,13 +129,12 @@ class Service{
                 
                 if let downloadURL = url {
                     let imageURLString = downloadURL.absoluteString
+                    
                     // Сохраните imageURLString в профиле пользователя или базе данных
                     if let currentUser = Auth.auth().currentUser {
                         let db = Firestore.firestore()
                         let userID = currentUser.uid
                         let userRef = db.collection("users").whereField("uid", isEqualTo: userID).limit(to: 1)
-                        
-                        let imageURLString = "https://<your-image-url>"
                         
                         userRef.getDocuments { (querySnapshot, error) in
                             if let error = error {
@@ -161,8 +161,6 @@ class Service{
             }
         }
     }
-
-
  
 //
             
