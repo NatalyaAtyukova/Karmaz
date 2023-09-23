@@ -75,28 +75,25 @@ class Service{
     
     
     func getUserInfo(completion: @escaping (String?, String?) -> Void) {
-        if let user = Auth.auth().currentUser {
-            let db = Firestore.firestore()
-            let uid = user.uid
-
-            // Получаем ссылку на документ пользователя в Firestore
-            let userRef = db.collection("users").document("rUmL4wcykX1uKXoq0QNV") //uid конкретного пользователя "rUmL4wcykX1uKXoq0QNV"
-
-            // Получаем данные пользователя из Firestore
-            userRef.getDocument { (document, error) in
-                if let document = document, document.exists {
-                    let data = document.data()
-                    let firstName = data?["firstName"] as? String
-                    let lastName = data?["lastName"] as? String
-                    
-                    completion(firstName, lastName)
-
-                    // Выводим приветствие с именем пользователя
-                    print("\(firstName ?? ""), \(lastName ?? "")")
-                    
+        if let currentUser = Auth.auth().currentUser {
+            let userID = currentUser.uid
+            let usersRef = Firestore.firestore().collection("users").whereField("uid", isEqualTo: userID)
+            usersRef.getDocuments { (querySnapshot, error) in
+                if let error = error {
+                    print("Error getting user data: \(error)")
                 } else {
-                    // Ошибка при получении данных пользователя
-                    print("Привет, Unknown!")
+                    if let document = querySnapshot?.documents.first {
+                        let data = document.data()
+                        let firstName = data["firstName"] as? String
+                        let lastName = data["lastName"] as? String
+                        completion(firstName, lastName)
+                        // Выводим приветствие с именем пользователя
+                        print("\(firstName ?? ""), \(lastName ?? "")")
+                        
+                    } else {
+                        // Ошибка при получении данных пользователя
+                        print("Привет, Unknown!")
+                    }
                 }
             }
         }
