@@ -25,6 +25,8 @@
 		C8869DC82A77B2720027C0FC /* RegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8869DC72A77B2720027C0FC /* RegViewController.swift */; };
 		C8BB11A02A7AD3CE0070747F /* ResetPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BB119F2A7AD3CE0070747F /* ResetPassViewController.swift */; };
 		C8CA6E8E2A77DB4900364D96 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CA6E8D2A77DB4900364D96 /* LoginViewController.swift */; };
+		C8D0F4502AC97C2E00296F48 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8D0F44F2AC97C2E00296F48 /* OrderCell.xib */; };
+		C8D0F4522AC97CFB00296F48 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D0F4512AC97CFB00296F48 /* OrderCell.swift */; };
 		C8E4F4A42A7FAFD7006CEAA4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C8E4F4A32A7FAFD7006CEAA4 /* FirebaseAnalytics */; };
 		C8E4F4A62A7FAFD7006CEAA4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C8E4F4A52A7FAFD7006CEAA4 /* FirebaseAuth */; };
 		C8E4F4A82A7FAFD7006CEAA4 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = C8E4F4A72A7FAFD7006CEAA4 /* FirebaseDatabase */; };
@@ -74,6 +76,8 @@
 		C8869DC72A77B2720027C0FC /* RegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegViewController.swift; sourceTree = "<group>"; };
 		C8BB119F2A7AD3CE0070747F /* ResetPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassViewController.swift; sourceTree = "<group>"; };
 		C8CA6E8D2A77DB4900364D96 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C8D0F44F2AC97C2E00296F48 /* OrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
+		C8D0F4512AC97CFB00296F48 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		C8FF23EB2AB4D4F5009B797F /* PayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
 		C8FF23ED2AB4D502009B797F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +118,8 @@
 				C81718542AACE95D00826C2A /* TabBarViewController.swift */,
 				C8FF23EB2AB4D4F5009B797F /* PayViewController.swift */,
 				C8FF23ED2AB4D502009B797F /* MapViewController.swift */,
+				C8D0F44F2AC97C2E00296F48 /* OrderCell.xib */,
+				C8D0F4512AC97CFB00296F48 /* OrderCell.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -300,6 +306,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8D0F4502AC97C2E00296F48 /* OrderCell.xib in Resources */,
 				C8869DA12A77AB770027C0FC /* LaunchScreen.storyboard in Resources */,
 				C820A0F62A880F3F00A88A55 /* GoogleService-Info.plist in Resources */,
 				C8869D9E2A77AB770027C0FC /* Assets.xcassets in Resources */,
@@ -330,6 +337,7 @@
 			files = (
 				C820A0F82A8820D400A88A55 /* ResponseCode.swift in Sources */,
 				C8FF23EC2AB4D4F5009B797F /* PayViewController.swift in Sources */,
+				C8D0F4522AC97CFB00296F48 /* OrderCell.swift in Sources */,
 				C8869D992A77AB760027C0FC /* ViewController.swift in Sources */,
 				C81718552AACE95D00826C2A /* TabBarViewController.swift in Sources */,
 				C86AD2C12A92161F0065EE55 /* ProfileViewController.swift in Sources */,

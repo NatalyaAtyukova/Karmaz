@@ -63,7 +63,7 @@ class Service{
                         AlertManager.showErrorAlert(in: viewController, title: "Вход в пользователя", message: "Ошибка при входе в пользователя! Проверьте введенные данные!")
                     } else {
                         // Успешный вход в систему
-                        viewController.performSegue(withIdentifier: "goToProfile", sender: self)
+                        viewController.performSegue(withIdentifier: "goToApp", sender: self)
                     }
                 }
             }
