@@ -161,6 +161,37 @@ class Service{
             }
         }
     }
+    
+    func getOrderInfo(completion: @escaping (String?, String?, String?, String?) -> Void) {
+      
+            // Создаем ссылку на коллекцию "orders" и фильтруем ее по полю "uid" равному UID пользователя
+            let ordersRef = Firestore.firestore().collection("orders")
+            // Получаем документы, удовлетворяющие фильтру
+            ordersRef.getDocuments { (querySnapshot, error) in
+                // Проверяем наличие ошибки
+                if let error = error {
+                    print("Error getting orders data: \(error)")
+                } else {
+                    // Проверяем, есть ли документы
+                    if let document = querySnapshot?.documents.first {
+                        // Получаем данные из документа
+                        let data = document.data()
+                        
+                        let info = data["info"] as? String
+                        let price = data["price"] as? String
+                        let recipientCity = data["recipientCity"] as? String
+                        let senderCity = data["senderCity"] as? String
+                          completion(info, price, recipientCity, senderCity)
+                          // Выводим приветствие с именем пользователя и ссылкой на изображение
+                          print("\(info ?? ""), \(price ?? ""), \(recipientCity ?? ""), \(senderCity ?? "")")
+                        
+                    } else {
+                        // Ошибка при получении данных пользователя
+                        print("Order List is unknown!")
+                    }
+                }
+            }
+        }
  
 //
             
