@@ -28,4 +28,17 @@ class OrderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func configure(info: String?, price: String?, recipientCity: String?, senderCity: String?) {
+        // Ваш код для настройки отображения информации в ячейке
+        orderInfoLabel.text = info
+        orderPriceLabel.text = price
+        
+        if let recipientCity = recipientCity, let senderCity = senderCity {
+                let combinedCity = "\(recipientCity), \(senderCity)"
+                orderCityLabel.text = combinedCity
+            } else {
+                orderCityLabel.text = nil
+            }
+    }
+    
 }

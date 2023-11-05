@@ -17,6 +17,8 @@ class Service{
     
     var alert = AlertManager.shared
     
+    var orders: [(info: String?, price: String?, recipientCity: String?, senderCity: String?)] = []
+    
     func createUser(in viewController: RegViewController, firstName: String, lastName: String, email: String, password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if error != nil {
@@ -162,36 +164,34 @@ class Service{
         }
     }
     
-    func getOrderInfo(completion: @escaping (String?, String?, String?, String?) -> Void) {
-      
-            // Создаем ссылку на коллекцию "orders" и фильтруем ее по полю "uid" равному UID пользователя
-            let ordersRef = Firestore.firestore().collection("orders")
-            // Получаем документы, удовлетворяющие фильтру
-            ordersRef.getDocuments { (querySnapshot, error) in
-                // Проверяем наличие ошибки
-                if let error = error {
-                    print("Error getting orders data: \(error)")
-                } else {
-                    // Проверяем, есть ли документы
-                    if let document = querySnapshot?.documents.first {
-                        // Получаем данные из документа
+    func getOrderInfo(completion: @escaping ([(info: String?, price: String?, recipientCity: String?, senderCity: String?)]) -> Void) {
+        let ordersRef = Firestore.firestore().collection("orders")
+        ordersRef.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting orders data: \(error)")
+            } else {
+                if let documents = querySnapshot?.documents {
+                    // Очищаем массив перед добавлением новых данных
+                    self.orders.removeAll()
+                    
+                    // Получаем данные из каждого документа и добавляем их в массив
+                    for document in documents {
                         let data = document.data()
-                        
                         let info = data["info"] as? String
                         let price = data["price"] as? String
                         let recipientCity = data["recipientCity"] as? String
                         let senderCity = data["senderCity"] as? String
-                          completion(info, price, recipientCity, senderCity)
-                          // Выводим приветствие с именем пользователя и ссылкой на изображение
-                          print("\(info ?? ""), \(price ?? ""), \(recipientCity ?? ""), \(senderCity ?? "")")
                         
-                    } else {
-                        // Ошибка при получении данных пользователя
-                        print("Order List is unknown!")
+                        self.orders.append((info: info, price: price, recipientCity: recipientCity, senderCity: senderCity))
                     }
+                    
+                    completion(self.orders)
+                } else {
+                    print("Order List is unknown!")
                 }
             }
         }
+    }
  
 //
             

@@ -27,20 +27,27 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         searchBar.delegate = self
         
+        // Вызываем функцию для получения данных о заказах
+        service.getOrderInfo { (orders) in
+               // Обновляем таблицу с полученными данными
+               DispatchQueue.main.async {
+                   self.tableView.reloadData()
+               }
+           }
         
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Возвращайте количество ячеек, которые вы хотите отобразить
-        return 10
+        return service.orders.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: idCell) as! OrderTableViewCell
-        
-        
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: idCell, for: indexPath) as! OrderTableViewCell
+
+        let order = service.orders[indexPath.row]
+        cell.configure(info: order.info, price: order.price, recipientCity: order.recipientCity, senderCity: order.senderCity)
+
         return cell
     }
     
