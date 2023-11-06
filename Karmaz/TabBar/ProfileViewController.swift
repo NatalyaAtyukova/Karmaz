@@ -6,9 +6,6 @@
 //
 
 import UIKit
-import FirebaseStorage
-import FirebaseFirestore
-import FirebaseAuth
 
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate  {
@@ -55,7 +52,16 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
         present(imagePicker, animated: true, completion: nil)
         imagePicker.sourceType = .photoLibrary
     }
+    
+    
+   
+    @IBAction func goToNewOrder(_ sender: UIButton) {
+        performSegue(withIdentifier: "goToCreateNewOrder", sender: self)
+    }
+    
+ 
 
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             profileImageView.image = image
@@ -71,6 +77,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
    
     
  
+    
+    
+    
+    
+    
+    
+    
     }
 
     
