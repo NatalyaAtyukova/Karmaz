@@ -1,13 +1,13 @@
 //
-//  ActiveOrderViewController.swift
+//  PayViewController.swift
 //  Karmaz
 //
-//  Created by Наталья Атюкова on 19.11.2023.
+//  Created by Наталья Атюкова on 10.12.2023.
 //
 
 import UIKit
 
-class ActiveOrderViewController: UIViewController {
+class PayViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
