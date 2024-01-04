@@ -21,7 +21,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    
+       
     
     
     @IBAction func btnForReg(_ sender: UIButton) {

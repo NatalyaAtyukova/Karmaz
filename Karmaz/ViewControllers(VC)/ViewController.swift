@@ -29,6 +29,7 @@ class ViewController: UIViewController {
         loginViewController.modalPresentationStyle = .fullScreen
         present(loginViewController, animated: true, completion: nil)
     }
+    
     func endListenAuth() {
         Auth.auth().removeStateDidChangeListener(listenAuth)
     }

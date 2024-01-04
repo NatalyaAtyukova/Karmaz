@@ -12,12 +12,13 @@ import FirebaseAuth
 
 
 class Service{
+    
     static let shared = Service()
     init() {}
     
     var alert = AlertManager.shared
     
-    var orders: [(info: String?, price: String?, recipientCity: String?, senderCity: String?)] = []
+    var orders: [(orderID: String, info: String?, price: String?, recipientCity: String?, senderCity: String?)] = []
     
     func createUser(in viewController: RegViewController, firstName: String, lastName: String, email: String, password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
@@ -40,7 +41,7 @@ class Service{
         }
     }
     
-
+    
     
     func SignInApp(in viewController: LoginViewController, email: String, password: String) {
         guard !email.isEmpty, !password.isEmpty else {
@@ -65,15 +66,26 @@ class Service{
                         AlertManager.showErrorAlert(in: viewController, title: "Вход в пользователя", message: "Ошибка при входе в пользователя! Проверьте введенные данные!")
                     } else {
                         // Успешный вход в систему
-                        viewController.performSegue(withIdentifier: "goToApp", sender: self)
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController // Изменить идентификатор вашего контроллера в файле storyboard
+                        DispatchQueue.main.async { viewController.present(tabBarController, animated: true, completion: nil)
+                        }
                     }
                 }
             }
         }
     }
     
-//    func checkAuthInApp(){
-//    }
+    
+    
+    //   переход через сегвей
+    //    DispatchQueue.main.async {
+    //        viewController.performSegue(withIdentifier: "goToApp", sender: self)
+    //    }
+    
+    
+    //    func checkAuthInApp(){
+    //    }
     
     
     func getUserInfo(completion: @escaping (String?, String?, String?) -> Void) {
@@ -96,9 +108,9 @@ class Service{
                         let firstName = data["firstName"] as? String
                         let lastName = data["lastName"] as? String
                         let imageURL = data["imageURL"] as? String
-                          completion(firstName, lastName, imageURL)
-                          // Выводим приветствие с именем пользователя и ссылкой на изображение
-                          print("\(firstName ?? ""), \(lastName ?? ""), \(imageURL ?? "")")
+                        completion(firstName, lastName, imageURL)
+                        // Выводим приветствие с именем пользователя и ссылкой на изображение
+                        print("\(firstName ?? ""), \(lastName ?? ""), \(imageURL ?? "")")
                         
                     } else {
                         // Ошибка при получении данных пользователя
@@ -176,27 +188,80 @@ class Service{
                     
                     // Получаем данные из каждого документа и добавляем их в массив
                     for document in documents {
+                        let orderID = document.documentID // получение идентификатора документа как orderID
                         let data = document.data()
                         let info = data["info"] as? String
                         let price = data["price"] as? String
                         let recipientCity = data["recipientCity"] as? String
                         let senderCity = data["senderCity"] as? String
+                      
                         
-                        self.orders.append((info: info, price: price, recipientCity: recipientCity, senderCity: senderCity))
+                        self.orders.append((orderID: orderID, info: info, price: price, recipientCity: recipientCity, senderCity: senderCity))
                     }
                     
-                    completion(self.orders)
+                    // Создаем новый массив с игнорированием orderID и передаем его в completion
+                                  var result: [(info: String?, price: String?, recipientCity: String?, senderCity: String?)] = []
+                                  for order in self.orders {
+                                      let item = (info: order.info, price: order.price, recipientCity: order.recipientCity, senderCity: order.senderCity)
+                                      result.append(item)
+                                  }
+                                  completion(result)
                 } else {
                     print("Order List is unknown!")
                 }
             }
         }
     }
- 
+    
+    
+    
+    
+    
+    
+    
+    func createNewOrder(in viewController: NewOrderViewController, orderInfo: String, orderPrice: String, recipientCity: String, senderCity: String) {
+        let orderRef = Firestore.firestore().collection("orders").document()
+        let orderID = orderRef.documentID
+        
+        let orderData: [String: Any] = [
+            "info": orderInfo,
+            "price": orderPrice,
+            "recipientCity": recipientCity,
+            "senderCity": senderCity,
+            "uid": Auth.auth().currentUser!.uid,
+            "isActive": false
+        ]
+        
+        orderRef.setData(orderData, merge: true) { error in
+            if error != nil {
+                AlertManager.showErrorAlert(in: viewController, title: "Создание заказа", message: "Не удалось создать заказ")
+            } else {
+                AlertManager.showErrorAlert(in: viewController, title: "Создание заказа", message: "Заказ успешно создан!")
+            }
+        }
+    }
+    
+    
+    func setActiveStatus(for orderID: String) {
+        let orderRef = Firestore.firestore().collection("orders").document(orderID)
+        orderRef.updateData(["isActive": true]) { error in
+            if let error = error {
+                // Обработка ошибки
+                print("Не удалось обновить статус заказа: \(error.localizedDescription)")
+            } else {
+                // Успешное обновление статуса заказа
+                print("Статус заказа успешно обновлен")
+            }
+        }
+    }
+    
+}
+    
+    
+    
+    
+
 //
-            
-            
-//            
 //                func checkAuthInApp(){
 //                    Auth.auth().signIn(in viewController: ProfileViewController, withEmail: email, password: password) { result, error in
 //                        if error != nil{
@@ -214,7 +279,7 @@ class Service{
 //                    }
 //                }
 //            
-        }
+        
         
         
         

@@ -55,6 +55,9 @@
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="tinted" title="Button"/>
+                        <connections>
+                            <action selector="getOrder:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jWx-a0-ikT"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -74,7 +77,6 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="getOrderBtn" destination="yAL-v1-x9W" id="JDA-iC-pp5"/>
                 <outlet property="orderCityLabel" destination="mRl-8n-Mjh" id="XQS-kr-VyW"/>
                 <outlet property="orderInfoLabel" destination="x1N-n7-zJc" id="SM3-HQ-BU5"/>
                 <outlet property="orderPriceLabel" destination="bKH-GT-SLf" id="Zsd-Wd-mnh"/>

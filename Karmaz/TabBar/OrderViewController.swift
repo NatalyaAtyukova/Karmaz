@@ -35,6 +35,16 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
                }
            }
         
+//        getOrderInfo { orders in
+//            // Обрабатываем полученные заказы здесь
+//            for order in orders {
+//                print("Info: \(order.info ?? "")")
+//                print("Price: \(order.price ?? "")")
+//                print("Recipient City: \(order.recipientCity ?? "")")
+//                print("Sender City: \(order.senderCity ?? "")")
+//            }
+//        }
+        
         
     }
     
@@ -46,14 +56,14 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: idCell, for: indexPath) as! OrderTableViewCell
 
         let order = service.orders[indexPath.row]
-        cell.configure(info: order.info, price: order.price, recipientCity: order.recipientCity, senderCity: order.senderCity)
+        cell.configure(info: order.info, price: order.price, recipientCity: order.recipientCity, senderCity: order.senderCity, orderID: order.orderID)
+
 
         return cell
     }
     
     
-    
-
+ 
  
        
    }
