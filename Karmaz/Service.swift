@@ -255,11 +255,15 @@ class Service{
         }
     }
     
+    
 }
     
+
+
+
+
     
-    
-    
+
 
 //
 //                func checkAuthInApp(){
@@ -279,8 +283,8 @@ class Service{
 //                    }
 //                }
 //            
-        
-        
+//        
+//        
         
         
     

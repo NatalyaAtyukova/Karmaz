@@ -641,6 +641,14 @@
                                     <segue destination="PfR-5i-1vE" kind="presentation" identifier="goToCreateNewOrder" id="7op-0B-v4b"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJB-ee-Xzt">
+                                <rect key="frame" x="110.66666666666667" y="123" width="171.66666666666663" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Выйти из профиля"/>
+                                <connections>
+                                    <action selector="logoutBtn:" destination="HO4-Vp-7jg" eventType="touchUpInside" id="9wp-lg-H0q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rGK-7N-MQL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -648,16 +656,19 @@
                             <constraint firstItem="HVI-hr-QQs" firstAttribute="top" secondItem="Wdv-zv-UB8" secondAttribute="top" constant="420" id="1lG-oS-ijo"/>
                             <constraint firstItem="kc1-RZ-6Kw" firstAttribute="centerX" secondItem="Wdv-zv-UB8" secondAttribute="centerX" id="3Tm-iP-XZs"/>
                             <constraint firstItem="kc1-RZ-6Kw" firstAttribute="top" secondItem="9i3-ZP-OE3" secondAttribute="bottom" constant="71" id="4j0-Qj-REg"/>
+                            <constraint firstItem="CJB-ee-Xzt" firstAttribute="top" secondItem="9i3-ZP-OE3" secondAttribute="bottom" constant="13" id="53h-UZ-7qU"/>
                             <constraint firstItem="HVI-hr-QQs" firstAttribute="leading" secondItem="rGK-7N-MQL" secondAttribute="leading" constant="124" id="5Kx-wy-tkj"/>
                             <constraint firstItem="rGK-7N-MQL" firstAttribute="bottom" secondItem="yyK-p7-Rdg" secondAttribute="bottom" constant="103" id="BhH-HP-TuM"/>
                             <constraint firstItem="AWU-vE-zsE" firstAttribute="centerX" secondItem="Wdv-zv-UB8" secondAttribute="centerX" id="DhB-P1-mr9"/>
                             <constraint firstItem="yyK-p7-Rdg" firstAttribute="centerX" secondItem="Wdv-zv-UB8" secondAttribute="centerX" id="EbP-tN-bNc"/>
                             <constraint firstItem="9i3-ZP-OE3" firstAttribute="leading" secondItem="rGK-7N-MQL" secondAttribute="leading" constant="137" id="Hga-9O-dBV"/>
                             <constraint firstItem="9i3-ZP-OE3" firstAttribute="top" secondItem="rGK-7N-MQL" secondAttribute="top" constant="30" id="Lch-sQ-40q"/>
+                            <constraint firstItem="CJB-ee-Xzt" firstAttribute="centerX" secondItem="Wdv-zv-UB8" secondAttribute="centerX" id="NpV-S6-Huh"/>
                             <constraint firstItem="AWU-vE-zsE" firstAttribute="leading" secondItem="rGK-7N-MQL" secondAttribute="leading" constant="131.66666666666663" id="PX7-rm-Akb"/>
                             <constraint firstItem="HVI-hr-QQs" firstAttribute="top" secondItem="AWU-vE-zsE" secondAttribute="bottom" constant="32" id="aT8-c7-gxI"/>
                             <constraint firstItem="AWU-vE-zsE" firstAttribute="top" secondItem="kc1-RZ-6Kw" secondAttribute="bottom" constant="56.666666666666657" id="fkf-VW-dbg"/>
                             <constraint firstItem="9i3-ZP-OE3" firstAttribute="centerX" secondItem="Wdv-zv-UB8" secondAttribute="centerX" id="t59-pS-XRc"/>
+                            <constraint firstItem="CJB-ee-Xzt" firstAttribute="leading" secondItem="rGK-7N-MQL" secondAttribute="leading" constant="110.66666666666669" id="xne-VF-2av"/>
                             <constraint firstItem="HVI-hr-QQs" firstAttribute="centerX" secondItem="Wdv-zv-UB8" secondAttribute="centerX" id="z0G-ka-9bL"/>
                         </constraints>
                     </view>

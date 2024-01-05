@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate  {
-   
+    
     var service = Service.shared
- 
-
+    
+    
     @IBOutlet weak var profileImageView: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -22,7 +23,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
         service.getUserInfo { [weak self] firstName, lastName, imageURL in
             self?.displayUserData(firstName: firstName, lastName: lastName, imageURL: imageURL)
         }
-
+        
         imagePicker.delegate = self
     }
     
@@ -44,22 +45,48 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
             }
         }
     }
-
-
+    
+    
     let imagePicker = UIImagePickerController()
-
+    
     @IBAction func choosePhotoButtonTapped(_ sender: UIButton) {
         present(imagePicker, animated: true, completion: nil)
         imagePicker.sourceType = .photoLibrary
     }
     
     
-   
+    
     @IBAction func goToNewOrder(_ sender: UIButton) {
         performSegue(withIdentifier: "goToCreateNewOrder", sender: self)
     }
     
- 
+    @IBAction func logoutBtn(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            
+            // Создайте экземпляр LoginViewController из сториборда
+            if let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
+                
+                // Получите экземпляр навигационного контроллера, если у вас используется
+                if let navigationController = self.navigationController {
+                    // Выполните переход на экран LoginViewController
+                    navigationController.setViewControllers([loginViewController], animated: true)
+                } else {
+                    // Если у вас не используется навигационный контроллер, то выполните простой модальный переход
+                    self.present(loginViewController, animated: true, completion: nil)
+                }
+            }
+        } catch {
+            print("Error signing out: \(error.localizedDescription)")
+        }
+    }
+
+
+        
+
+
+    
+    
 
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
