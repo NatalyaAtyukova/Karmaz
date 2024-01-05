@@ -21,7 +21,6 @@ class ViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
                 
-                // Рассмотрим возможность настройки ProfileViewController, если это необходимо
                 
                 // Устанавливаем tabBarController в качестве корневого контроллера окна
                 if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
@@ -48,7 +47,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     
@@ -62,4 +60,7 @@ class ViewController: UIViewController {
     func endListenAuth() {
         Auth.auth().removeStateDidChangeListener(listenAuth)
     }
+    
+
+    
 }

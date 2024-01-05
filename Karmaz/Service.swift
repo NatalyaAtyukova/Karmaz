@@ -178,14 +178,14 @@ class Service{
     
     func getOrderInfo(completion: @escaping ([(info: String?, price: String?, recipientCity: String?, senderCity: String?)]) -> Void) {
         let ordersRef = Firestore.firestore().collection("orders")
-        ordersRef.getDocuments { (querySnapshot, error) in
+        ordersRef.addSnapshotListener { (querySnapshot, error) in
             if let error = error {
                 print("Error getting orders data: \(error)")
+                completion([]) // вызываем completion с пустым массивом при ошибке
             } else {
                 if let documents = querySnapshot?.documents {
                     // Очищаем массив перед добавлением новых данных
                     self.orders.removeAll()
-                    
                     // Получаем данные из каждого документа и добавляем их в массив
                     for document in documents {
                         let orderID = document.documentID // получение идентификатора документа как orderID
@@ -194,35 +194,27 @@ class Service{
                         let price = data["price"] as? String
                         let recipientCity = data["recipientCity"] as? String
                         let senderCity = data["senderCity"] as? String
-                      
-                        
                         self.orders.append((orderID: orderID, info: info, price: price, recipientCity: recipientCity, senderCity: senderCity))
                     }
-                    
                     // Создаем новый массив с игнорированием orderID и передаем его в completion
-                                  var result: [(info: String?, price: String?, recipientCity: String?, senderCity: String?)] = []
-                                  for order in self.orders {
-                                      let item = (info: order.info, price: order.price, recipientCity: order.recipientCity, senderCity: order.senderCity)
-                                      result.append(item)
-                                  }
-                                  completion(result)
+                    var result: [(info: String?, price: String?, recipientCity: String?, senderCity: String?)] = []
+                    for order in self.orders {
+                        let item = (info: order.info, price: order.price, recipientCity: order.recipientCity, senderCity: order.senderCity)
+                        result.append(item)
+                    }
+                    completion(result) // вызываем completion с актуальными данными
                 } else {
                     print("Order List is unknown!")
+                    completion([]) // вызываем completion с пустым массивом если нет документов
                 }
             }
         }
     }
-    
-    
-    
-    
-    
+
     
     
     func createNewOrder(in viewController: NewOrderViewController, orderInfo: String, orderPrice: String, recipientCity: String, senderCity: String) {
         let orderRef = Firestore.firestore().collection("orders").document()
-        let orderID = orderRef.documentID
-        
         let orderData: [String: Any] = [
             "info": orderInfo,
             "price": orderPrice,

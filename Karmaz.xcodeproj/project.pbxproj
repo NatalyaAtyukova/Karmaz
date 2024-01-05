@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C811E3282B4830C300767EC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C811E3272B4830C300767EC7 /* Assets.xcassets */; };
 		C8680C002A8CE3C40062ADEF /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8680BFF2A8CE3C40062ADEF /* Service.swift */; };
 		C8680C042A8CECAA0062ADEF /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8680C032A8CECAA0062ADEF /* AlertManager.swift */; };
 		C86AD2C12A92161F0065EE55 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86AD2C02A92161F0065EE55 /* ProfileViewController.swift */; };
@@ -15,7 +16,6 @@
 		C8869D972A77AB760027C0FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8869D962A77AB760027C0FC /* SceneDelegate.swift */; };
 		C8869D992A77AB760027C0FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8869D982A77AB760027C0FC /* ViewController.swift */; };
 		C8869D9C2A77AB760027C0FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8869D9A2A77AB760027C0FC /* Main.storyboard */; };
-		C8869D9E2A77AB770027C0FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8869D9D2A77AB770027C0FC /* Assets.xcassets */; };
 		C8869DA12A77AB770027C0FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8869D9F2A77AB770027C0FC /* LaunchScreen.storyboard */; };
 		C8869DAC2A77AB770027C0FC /* KarmazTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8869DAB2A77AB770027C0FC /* KarmazTests.swift */; };
 		C8869DB62A77AB770027C0FC /* KarmazUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8869DB52A77AB770027C0FC /* KarmazUITests.swift */; };
@@ -54,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C811E3272B4830C300767EC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8680BFF2A8CE3C40062ADEF /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		C8680C032A8CECAA0062ADEF /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		C86AD2C02A92161F0065EE55 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -63,7 +64,6 @@
 		C8869D962A77AB760027C0FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C8869D982A77AB760027C0FC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C8869D9B2A77AB760027C0FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C8869D9D2A77AB770027C0FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8869DA02A77AB770027C0FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8869DA22A77AB770027C0FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8869DA72A77AB770027C0FC /* KarmazTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KarmazTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,7 +164,7 @@
 				C8869D942A77AB760027C0FC /* AppDelegate.swift */,
 				C8869D962A77AB760027C0FC /* SceneDelegate.swift */,
 				C8869D9A2A77AB760027C0FC /* Main.storyboard */,
-				C8869D9D2A77AB770027C0FC /* Assets.xcassets */,
+				C811E3272B4830C300767EC7 /* Assets.xcassets */,
 				C8869D9F2A77AB770027C0FC /* LaunchScreen.storyboard */,
 				C8F49DE52AD2C86B00B77816 /* GoogleService-Info.plist */,
 				C8869DA22A77AB770027C0FC /* Info.plist */,
@@ -316,9 +316,9 @@
 			files = (
 				C8F49DEB2AD2C88600B77816 /* OrderTableViewCell.xib in Resources */,
 				C8869DA12A77AB770027C0FC /* LaunchScreen.storyboard in Resources */,
-				C8869D9E2A77AB770027C0FC /* Assets.xcassets in Resources */,
 				C8869D9C2A77AB760027C0FC /* Main.storyboard in Resources */,
 				C8F49DE62AD2C86B00B77816 /* GoogleService-Info.plist in Resources */,
+				C811E3282B4830C300767EC7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
