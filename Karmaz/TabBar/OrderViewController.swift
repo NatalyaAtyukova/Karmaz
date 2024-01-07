@@ -7,10 +7,13 @@
 
 import UIKit
 
+ 
+
 class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+
+
     
     var service = Service.shared
-    
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -20,6 +23,7 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -34,17 +38,6 @@ class OrderViewController: UIViewController, UITableViewDelegate, UITableViewDat
                    self.tableView.reloadData()
                }
            }
-        
-//        getOrderInfo { orders in
-//            // Обрабатываем полученные заказы здесь
-//            for order in orders {
-//                print("Info: \(order.info ?? "")")
-//                print("Price: \(order.price ?? "")")
-//                print("Recipient City: \(order.recipientCity ?? "")")
-//                print("Sender City: \(order.senderCity ?? "")")
-//            }
-//        }
-        
         
     }
     

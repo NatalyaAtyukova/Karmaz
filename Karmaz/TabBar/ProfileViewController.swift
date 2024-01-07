@@ -12,7 +12,7 @@ import FirebaseAuth
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate  {
     
     var service = Service.shared
-    
+    var alert = AlertManager.shared
     
     @IBOutlet weak var profileImageView: UIImageView!
     
@@ -20,9 +20,16 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        service.getUserInfo { [weak self] firstName, lastName, imageURL in
-            self?.displayUserData(firstName: firstName, lastName: lastName, imageURL: imageURL)
+        service.getUserInfo { (firstName, lastName, imageURL, error) in
+            if let error = error {
+                // Обрабатываем ошибку: показываем ее в пользовательском интерфейсе
+                print(error) // или используйте другой способ сообщения об ошибке пользователю
+            } else {
+                // Обрабатываем правильные данные
+                self.displayUserData(firstName: firstName, lastName: lastName, imageURL: imageURL)
+            }
         }
+
         
         imagePicker.delegate = self
     }
@@ -92,7 +99,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate &
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             profileImageView.image = image
-            service.uploadImage(image: image)
+            service.uploadImage(image: image) { imageURLString, error in
+               if let error = error {
+                   AlertManager.showErrorAlert(in: self, title: "Ошибка", message: "Не удалось загрузить изображение. Пожалуйста, попробуйте еще раз. Ошибка: \(error.localizedDescription)")
+               } else if let imageURLString = imageURLString {
+                   AlertManager.showErrorAlert(in: self, title: "Загружено", message: "Изображение успешно загружено. URL: \(imageURLString)")
+               }
+            }
         }
         
         dismiss(animated: true, completion: nil)

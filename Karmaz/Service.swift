@@ -16,6 +16,7 @@ class Service{
     static let shared = Service()
     init() {}
     
+
     var alert = AlertManager.shared
     
     var orders: [(orderID: String, info: String?, price: String?, recipientCity: String?, senderCity: String?)] = []
@@ -77,18 +78,7 @@ class Service{
     }
     
     
-    
-    //   переход через сегвей
-    //    DispatchQueue.main.async {
-    //        viewController.performSegue(withIdentifier: "goToApp", sender: self)
-    //    }
-    
-    
-    //    func checkAuthInApp(){
-    //    }
-    
-    
-    func getUserInfo(completion: @escaping (String?, String?, String?) -> Void) {
+    func getUserInfo(completion: @escaping (String?, String?, String?, String?) -> Void) {
         // Проверяем, есть ли текущий пользователь
         if let currentUser = Auth.auth().currentUser {
             // Получаем UID пользователя
@@ -99,7 +89,8 @@ class Service{
             usersRef.getDocuments { (querySnapshot, error) in
                 // Проверяем наличие ошибки
                 if let error = error {
-                    print("Error getting user data: \(error)")
+                    // Передаем описание ошибки через completion handler
+                    completion(nil, nil, nil, error.localizedDescription)
                 } else {
                     // Проверяем, есть ли документы
                     if let document = querySnapshot?.documents.first {
@@ -108,73 +99,70 @@ class Service{
                         let firstName = data["firstName"] as? String
                         let lastName = data["lastName"] as? String
                         let imageURL = data["imageURL"] as? String
-                        completion(firstName, lastName, imageURL)
-                        // Выводим приветствие с именем пользователя и ссылкой на изображение
-                        print("\(firstName ?? ""), \(lastName ?? ""), \(imageURL ?? "")")
-                        
+                        // Мы передаем nil в параметр ошибки, потому что ошибки нет
+                        completion(firstName, lastName, imageURL, nil)
                     } else {
                         // Ошибка при получении данных пользователя
-                        print("Привет, Unknown!")
+                        // Мы передаем ошибку через completion handler
+                        completion(nil, nil, nil, "Ошибка при получении данных пользователя")
                     }
                 }
             }
+        } else {
+            // Передаем ошибку, если не удается идентифицировать пользователя
+            completion(nil, nil, nil, "Пользователь не идентифицирован")
         }
     }
     
-    func uploadImage(image: UIImage) {
-        guard let imageData = image.jpegData(compressionQuality: 1.0) else { return }
+    func uploadImage(image: UIImage, completion: @escaping (String?, Error?) -> Void) {
+        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+            completion(nil, NSError(domain: "app", code: -1, userInfo: [NSLocalizedDescriptionKey: "Не удалось получить данные JPEG из изображения"]))
+            return
+        }
         
         let storageRef = Storage.storage().reference().child("profileImages").child(UUID().uuidString)
         
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
         
-        storageRef.putData(imageData, metadata: metadata) { (metadata, error) in
+        storageRef.putData(imageData, metadata: metadata) { metadata, error in
             if let error = error {
-                print("Ошибка при загрузке изображения: \(error.localizedDescription)")
+                completion(nil, error)
                 return
             }
             
-            storageRef.downloadURL { (url, error) in
+            storageRef.downloadURL { url, error in
                 if let error = error {
-                    print("Ошибка при получении URL загруженного изображения: \(error.localizedDescription)")
+                    completion(nil, error)
                     return
                 }
                 
-                if let downloadURL = url {
-                    let imageURLString = downloadURL.absoluteString
+                guard let downloadURL = url else {
+                    completion(nil, NSError(domain: "app", code: -1, userInfo: [NSLocalizedDescriptionKey: "Не удалось получить URL изображения"]))
+                    return
+                }
+                
+                let imageURLString = downloadURL.absoluteString
+                // Сохранить imageURLString в профиль пользователя или базе данных
+                if let currentUser = Auth.auth().currentUser {
+                    let db = Firestore.firestore()
+                    let userRef = db.collection("users").document(currentUser.uid)
                     
-                    // Сохраните imageURLString в профиле пользователя или базе данных
-                    if let currentUser = Auth.auth().currentUser {
-                        let db = Firestore.firestore()
-                        let userID = currentUser.uid
-                        let userRef = db.collection("users").whereField("uid", isEqualTo: userID).limit(to: 1)
-                        
-                        userRef.getDocuments { (querySnapshot, error) in
-                            if let error = error {
-                                print("Ошибка при получении документа пользователя: \(error.localizedDescription)")
-                            } else {
-                                if let document = querySnapshot?.documents.first {
-                                    document.reference.setData(["imageURL": imageURLString], merge: true) { (error) in
-                                        if let error = error {
-                                            print("Ошибка при сохранении URL изображения: \(error.localizedDescription)")
-                                        } else {
-                                            print("URL изображения успешно сохранен")
-                                            // Дополнительные операции после сохранения изображения
-                                        }
-                                    }
-                                } else {
-                                    print("Документ пользователя не найден")
-                                    
-                                    // Дополнительные операции после сохранения изображения
-                                }
-                            }
+                    userRef.setData(["profileImageURL": imageURLString], merge: true) { error in
+                        if let error = error {
+                            completion(nil, error)
+                        } else {
+                            // При успешном сохранении URL вызываем completion с URL и без ошибки
+                            completion(imageURLString, nil)
                         }
                     }
+                } else {
+                    completion(nil, NSError(domain: "app", code: -1, userInfo: [NSLocalizedDescriptionKey: "Пользователь не авторизован"]))
                 }
             }
         }
     }
+
     
     func getOrderInfo(completion: @escaping ([(info: String?, price: String?, recipientCity: String?, senderCity: String?)]) -> Void) {
         let ordersRef = Firestore.firestore().collection("orders")

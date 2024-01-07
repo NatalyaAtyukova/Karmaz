@@ -1,0 +1,33 @@
+PODS:
+  - PromiseKit/CorePromise (6.18.1)
+  - YandexLoginSDK (2.1.1)
+  - YandexMobileMetrica/Static (4.5.2):
+    - YandexMobileMetrica/Static/Core (= 4.5.2)
+    - YandexMobileMetrica/Static/Crashes (= 4.5.2)
+  - YandexMobileMetrica/Static/Core (4.5.2)
+  - YandexMobileMetrica/Static/Crashes (4.5.2):
+    - YandexMobileMetrica/Static/Core
+  - YandexPaySDK/Static (1.5.4):
+    - PromiseKit/CorePromise (~> 6.0)
+    - YandexLoginSDK (~> 2.1.1)
+    - YandexMobileMetrica/Static
+
+DEPENDENCIES:
+  - YandexPaySDK/Static
+
+SPEC REPOS:
+  trunk:
+    - PromiseKit
+    - YandexLoginSDK
+    - YandexMobileMetrica
+    - YandexPaySDK
+
+SPEC CHECKSUMS:
+  PromiseKit: 49d70c53d5d20e346beaea4b276b5dd2ab446bb4
+  YandexLoginSDK: ad9a07aca36a7748353af17c9cbbf2b83be9ba26
+  YandexMobileMetrica: f5368ee93f286c793d73b58da00929babfc897c1
+  YandexPaySDK: 53c7be3d8c9b210ac79c0000ba4cebe6f8ada6ef
+
+PODFILE CHECKSUM: 20ed5d1b6a28d58e8057af7d7a5d5905a05ba503
+
+COCOAPODS: 1.14.3

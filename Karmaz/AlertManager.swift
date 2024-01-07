@@ -7,7 +7,7 @@
 
 import UIKit
    
-class AlertManager {
+class AlertManager { //окна с ошибками
     static let shared = AlertManager()
     init() {}
     

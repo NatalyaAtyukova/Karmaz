@@ -251,7 +251,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qeh-EU-wRx">
-                                <rect key="frame" x="0.0" y="119" width="414" height="637"/>
+                                <rect key="frame" x="0.0" y="119" width="414" height="650"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
@@ -609,6 +609,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ziq-fi-aE3">
                                 <rect key="frame" x="127.66666666666669" y="647" width="138" height="35"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Создать заказ"/>
                                 <connections>
@@ -617,7 +618,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pMt-5b-7tg"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6zt-HU-FuE" firstAttribute="centerX" secondItem="0qr-sY-eF4" secondAttribute="centerX" id="5ih-7V-XoA"/>
                             <constraint firstItem="mAz-yy-7rd" firstAttribute="top" secondItem="79R-SO-iiG" secondAttribute="bottom" constant="5" id="5mg-lA-6fW"/>
@@ -660,6 +661,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVI-hr-QQs">
                                 <rect key="frame" x="124" y="420" width="145" height="35"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Добавить фото"/>
                                 <connections>
@@ -688,6 +690,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyK-p7-Rdg">
                                 <rect key="frame" x="68" y="631" width="257" height="35"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Добавить новый заказ в базу"/>
                                 <connections>
@@ -697,6 +700,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJB-ee-Xzt">
                                 <rect key="frame" x="110.66666666666667" y="123" width="171.66666666666663" height="35"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Выйти из профиля"/>
                                 <connections>
@@ -705,7 +709,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rGK-7N-MQL"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="HVI-hr-QQs" firstAttribute="top" secondItem="Wdv-zv-UB8" secondAttribute="top" constant="420" id="1lG-oS-ijo"/>
                             <constraint firstItem="kc1-RZ-6Kw" firstAttribute="centerX" secondItem="Wdv-zv-UB8" secondAttribute="centerX" id="3Tm-iP-XZs"/>
@@ -738,6 +742,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Wha-YH-PrI"/>
         <segue reference="hrh-MM-ps0"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -749,6 +754,9 @@
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="x4_background" width="960" height="1200"/>
+        <systemColor name="scrollViewTexturedBackgroundColor">
+            <color red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
